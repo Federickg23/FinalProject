@@ -53,20 +53,14 @@ class PersonalLibrary(webapp2.RequestHandler):
 		    <link href="https://fonts.googleapis.com/css?family=Orbitron|Russo+One" rel="stylesheet">
 		    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 			<link rel="stylesheet" type="text/css" href="css/main.css">
-
-
-
 		    <link href="/css/cover.css" rel="stylesheet">
 		    <title>readSmart</title>
 		    <link rel="shortcut icon" type="image/x-icon" href="/img/logo2.png"/>
-
 		  </head>
-
 		  <body>
 		    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		      <header class="masthead mb-auto">
 		        <div class="inner">
-
 				<a href="/"> <img class= "masthead-brand" style = "width: 220px; height: 60px;" src="/img/logo.png" alt="Logo"> </a>
 				<nav class="nav nav-masthead justify-content-right">
 					<a class="nav-link" style = "font-size: 24px;" href="/login">Home</a>
@@ -74,11 +68,9 @@ class PersonalLibrary(webapp2.RequestHandler):
 					<a class="nav-link active" style = "font-size: 24px;" href = "/library">Library</a>
 					<a class="nav-link" style = "font-size: 24px;" href = "/logout">Logout</a>
 				</nav>
-
 		          </nav>
 		        </div>
 		      </header>
-
 			  <div id = book_container">
 		""")
 
@@ -103,7 +95,6 @@ class PersonalLibrary(webapp2.RequestHandler):
 					<footer class="mastfoot mt-auto">
 					<div class="inner">
 					<p>readSmart&copy; Federick Gonzalez, Casey Mook, and Jaylen Patterson</p>
-
 					</div>
 					</footer>
 				""")
