@@ -98,6 +98,15 @@ class PersonalLibrary(webapp2.RequestHandler):
 							else:
 								print "Item hardcoded"
 								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False))
+				self.response.write("""
+					</div>
+					<footer class="mastfoot mt-auto">
+					<div class="inner">
+					<p>readSmart&copy; Federick Gonzalez, Casey Mook, and Jaylen Patterson</p>
+
+					</div>
+					</footer>
+				""")
 				return
 	def post(self):
 		print "Post method called"

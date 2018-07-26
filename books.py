@@ -108,10 +108,7 @@ class BookView(webapp2.RequestHandler):
 		else:
 			print "Item hardcoded"
 			self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False))
-<<<<<<< HEAD
-=======
 
->>>>>>> 79bf5ee83cabbd4d9af3dd0d0edfe3c1ae757df8
 		self.response.write(content.render(title = item.title, id = item.id, author = item.author, synopsis = item.synopsis, average = average, averageSet = True, list=list))
 		return
 
@@ -146,7 +143,7 @@ class BookHandler(webapp2.RequestHandler):
 
 				<a href="/"> <img class= "masthead-brand" style = "width: 200px; height: 50px;" src="/img/logo.png" alt="Logo"> </a>
 				<nav class="nav nav-masthead justify-content-right">
-					<a class="nav-link" style = "font-size: 24px;" href="#">Home</a>
+					<a class="nav-link" style = "font-size: 24px;" href="/login">Home</a>
 					<a class="nav-link active" style = "font-size: 24px;" href="/booklist">Books</a>
 					<a class="nav-link" style = "font-size: 24px;" href = "/library">Library</a>
 					<a class="nav-link" style = "font-size: 24px;" href = "/logout">Logout</a>
@@ -169,7 +166,7 @@ class BookHandler(webapp2.RequestHandler):
 				self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False))
 		self.response.write("""
 			</div>
-			<form action="/addBooks"> <input type = "submit" value = "Add a new Book"> </form>
+			<form action="/addBooks" style='margin-bottom: 20px;'> <input type = "submit" value = "Add a new Book"> </form>
 			<footer class="mastfoot mt-auto">
 			<div class="inner">
 			<p>readSmart&copy; Federick Gonzalez, Casey Mook, and Jaylen Patterson</p>
