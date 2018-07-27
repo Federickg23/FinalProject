@@ -67,12 +67,15 @@
         </div>
 
         <div class="form-group">
-          <input type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="Password" placeholder="Password" required="">
+          <input pattern=".{6,}" type="password" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" name="Password" placeholder="Password" required="">
           <span class="help-block">Minimum of 6 characters</span>
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" name="Confirm password" placeholder="Confirm password" required="">
+          <input pattern=".{6,}" type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Whoops, these don't match" name="Confirm password" placeholder="Confirm password" required="">
+          {% if passwords_do_not_match%}
+          <p style="color:red;"> Passwords do not match</p>
+          {% endif %}
           <div class="help-block with-errors"></div>
         </div>
 
