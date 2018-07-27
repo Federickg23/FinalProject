@@ -65,7 +65,8 @@ class BookView(webapp2.RequestHandler):
 			counter +=1
 		if counter != 0:
 			average = average/counter
-			Max = average * 2
+			Max = average * 4
+
 			Min = average / 4
 		if item.user_created == "yes":
 			print "Item Created By User"
@@ -98,7 +99,7 @@ class BookView(webapp2.RequestHandler):
 			counter +=1
 		if counter != 0:
 			average = average/counter
-			Max = average * 2
+			Max = average * 4
 			Min = average / 4
 		if item.user_created == "yes":
 			print "Item Created By User"
