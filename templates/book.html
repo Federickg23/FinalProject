@@ -18,16 +18,20 @@
               {% endif %}
 
               {% if library %}
+              <br>
+              <br>
               <form action="/removebooks" method = post>
-                <input type="submit" name="remove" id = "remove" value="Remove this book from your library">
+              <center>  <input type="submit" name="remove" style = "color: white; background-color: black; border-radius: 5px; border-width: 3px; width: 50%; position: relative;" id = "remove" value="Remove this book from your library"> </center>
                 <input type="text" name = "booktitle" id = "booktitle" value = "{{title}}" style="visibility: hidden;">
 
               </form>
               {% endif %}
 
-              <br>
+
               <p> {{ author }} </p>
               <br>
               <p> {{ synopsis }}</p>
+              <br>
+              <br>
         </body>
 </html>
