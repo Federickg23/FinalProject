@@ -5,7 +5,7 @@ from main import *
 from google.appengine.api import users
 from google.appengine.ext import ndb
 import logging
-
+from time import sleep
 
 TEMPLATE = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -44,6 +44,7 @@ class AddBookHandler(webapp2.RequestHandler):
 		s = str(book.image_file).encode('base64')
 		# <img src="data:image/jpg;base64,{{s}}">
 		book.put()
+		time.sleep(.5)
 		self.redirect("/BookView")
 
 class BookView(webapp2.RequestHandler):

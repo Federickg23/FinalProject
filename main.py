@@ -5,6 +5,8 @@ from books import *
 from google.appengine.api import users
 from google.appengine.ext import ndb
 import logging
+from time import sleep
+
 
 
 TEMPLATE = jinja2.Environment(
@@ -110,10 +112,13 @@ class PersonalLibrary(webapp2.RequestHandler):
 				book = self.request.get("book")
 				print book
 				if book in item.user_library:
+					sleep(.5)
 					self.redirect('/library')
 				else:
 					item.user_library.append(book)
 					item.put()
+					sleep(.5)
+
 					self.redirect('/library')
 
 
