@@ -69,7 +69,7 @@ class BookView(webapp2.RequestHandler):
 			print "Item Created By User"
 			s = str(item.image_file).encode('base64')
 			print s
-			self.response.write(content.render(title = item.title, id = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
+			self.response.write(content.render(title = item.title, s = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
 			return
 		else:
 			print "Item hardcoded"
@@ -93,12 +93,23 @@ class BookView(webapp2.RequestHandler):
 			print counter
 			average += number
 			list.append(["Person", item.bookindex[counter]])
-
 			counter +=1
-		average = average/counter
+		if counter != 0:
+			average = average/counter
+			Max = average * 2
+			Min = average / 4
+		if item.user_created == "yes":
+			print "Item Created By User"
+			s = str(item.image_file).encode('base64')
+			print s
+			self.response.write(content.render(title = item.title, s = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
+			return
+		else:
+			print "Item hardcoded"
+			self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False, average = average, list=list, Max = Max, Min = Min))
 		item.put()
 
-		self.response.write(content.render(title = item.title, id = item.id, author = item.author, average = average, averageSet = True, list=list))
+		# self.response.write(content.render(title = item.title, id = item.id, author = item.author, average = average, averageSet = True, list=list))
 		return
 
 
