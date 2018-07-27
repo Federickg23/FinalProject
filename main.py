@@ -224,6 +224,17 @@ def average(persons_input, title):
 			book_length = int(book_length)
 			b.bookindex.append(book_length)
 
+class RemoveBookHandler(webapp2.RequestHandler):
+	def post(self):
+		book = self.request.get("booktitle")
+		username = self.request.cookies.get("user")
+		q = CssiUser.query().filter(CssiUser.username == username).get()
+		self.response.write(book)
+		q.user_library.remove(book)
+		q.put()
+		sleep(.5)
+		self.redirect('/library')
+
 app = webapp2.WSGIApplication([
   ('/', HomePage),
   ('/login', MainHandler),
@@ -233,5 +244,6 @@ app = webapp2.WSGIApplication([
   ('/booklist', BookHandler),
   ('/bookview', BookView),
   ('/library', PersonalLibrary),
-  ('/addBooks', AddBookHandler)
+  ('/addBooks', AddBookHandler),
+  ('/removebooks', RemoveBookHandler)
 ], debug=True)
