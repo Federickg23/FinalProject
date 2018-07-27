@@ -89,10 +89,10 @@ class PersonalLibrary(webapp2.RequestHandler):
 								print "Item Created By User"
 								s = str(book.image_file).encode('base64')
 								print s
-								self.response.write(content.render(title = book.title, s = s, author = book.author, user = True, code = False))
+								self.response.write(content.render(title = book.title, s = s, author = book.author, user = True, code = False, library = True))
 							else:
 								print "Item hardcoded"
-								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False))
+								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False, library = True))
 				self.response.write("""
 					</div>
 					<footer class="mastfoot mt-auto">
