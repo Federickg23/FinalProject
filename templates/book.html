@@ -17,6 +17,14 @@
               <center><a href = "/bookview?title={{title}}"><img src="data:image/jpg;base64,{{s}}" alt ="{{ title }} Cover"></a></center>
               {% endif %}
 
+              {% if library %}
+              <form action="/removebooks" method = post>
+                <input type="submit" name="remove" id = "remove" value="Remove this book from your library">
+                <input type="text" name = "booktitle" id = "booktitle" value = "{{title}}" style="visibility: hidden;">
+
+              </form>
+              {% endif %}
+
               <br>
               <p> {{ author }} </p>
               <br>

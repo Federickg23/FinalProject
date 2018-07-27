@@ -88,10 +88,10 @@ class PersonalLibrary(webapp2.RequestHandler):
 								print "Item Created By User"
 								s = str(book.image_file).encode('base64')
 								print s
-								self.response.write(content.render(title = book.title, s = s, author = book.author, user = True, code = False))
+								self.response.write(content.render(title = book.title, s = s, author = book.author, user = True, code = False, synopsis = book.synopsis, library = True))
 							else:
 								print "Item hardcoded"
-								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False))
+								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False, synopsis = book.synopsis, library = True))
 				self.response.write("""
 					</div>
 					<footer class="mastfoot mt-auto">
@@ -204,7 +204,16 @@ class UserInput(webapp2.RequestHandler):
 		self.response.write(content.render(title = "book variable"))
 		# print "Class is functional"
 
-
+class RemoveBookHandler(webapp2.RequestHandler):
+	def post(self):
+		book = self.request.get("booktitle")
+		username = self.request.cookies.get("user")
+		q = CssiUser.query().filter(CssiUser.username == username).get()
+		self.response.write(book)
+		q.user_library.remove(book)
+		q.put()
+		sleep(.5)
+		self.redirect('/library')
 
 def average(persons_input, title):
 	b = Books.query().fetch()
@@ -223,5 +232,6 @@ app = webapp2.WSGIApplication([
   ('/booklist', BookHandler),
   ('/bookview', BookView),
   ('/library', PersonalLibrary),
-  ('/addBooks', AddBookHandler)
+  ('/addBooks', AddBookHandler),
+  ('/removebooks', RemoveBookHandler)
 ], debug=True)
