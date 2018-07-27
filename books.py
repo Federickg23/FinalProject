@@ -136,12 +136,11 @@ class BookHandler(webapp2.RequestHandler):
 		""")
 
 		for item in q:
-			# self.response.write(content.render(title = item.title, id = item.id, author = item.author))
 			if item.user_created == "yes":
 				print "Item Created By User"
 				s = str(item.image_file).encode('base64')
 				print s
-				self.response.write(content.render(title = item.title, id = s, author = item.author, user = True, code = False))
+				self.response.write(content.render(title = item.title, s = s, author = item.author, user = True, code = False))
 				return
 			else:
 				print "Item hardcoded"
