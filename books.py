@@ -44,7 +44,7 @@ class AddBookHandler(webapp2.RequestHandler):
 		s = str(book.image_file).encode('base64')
 		# <img src="data:image/jpg;base64,{{s}}">
 		book.put()
-		time.sleep(.5)
+		sleep(.5)
 		self.redirect("/BookView")
 
 class BookView(webapp2.RequestHandler):
