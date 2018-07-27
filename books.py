@@ -45,7 +45,7 @@ class AddBookHandler(webapp2.RequestHandler):
 		# <img src="data:image/jpg;base64,{{s}}">
 		book.put()
 		sleep(.5)
-		self.redirect("/BookView")
+		self.redirect("/booklist")
 
 class BookView(webapp2.RequestHandler):
 	def get(self):
