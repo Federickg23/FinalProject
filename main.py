@@ -38,6 +38,7 @@ class CssiUser(ndb.Model):
 	username = ndb.StringProperty()
 	email = ndb.StringProperty()
 	password = ndb.StringProperty()
+	confirm_password = ndb.StringProperty()
 	location = ndb.StringProperty()
 	user_library = ndb.StringProperty(repeated = True)
 
@@ -88,10 +89,10 @@ class PersonalLibrary(webapp2.RequestHandler):
 								print "Item Created By User"
 								s = str(book.image_file).encode('base64')
 								print s
-								self.response.write(content.render(title = book.title, s = s, author = book.author, user = True, code = False, synopsis = book.synopsis, library = True))
+								self.response.write(content.render(title = book.title, s = s, author = book.author, user = True, code = False))
 							else:
 								print "Item hardcoded"
-								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False, synopsis = book.synopsis, library = True))
+								self.response.write(content.render(title = book.title, id = book.id, author = book.author, code = True, user = False))
 				self.response.write("""
 					</div>
 					<footer class="mastfoot mt-auto">
@@ -126,12 +127,14 @@ class MainHandler(webapp2.RequestHandler):
 	def get(self):
     # user = users.get_current_user()
 		content = TEMPLATE.get_template('/templates/signup.html')
-
-		if self.request.cookies.get("logged_in") == "True":
-
-			self.response.write(content.render(success = True, user = self.request.cookies.get("user")))
+		if self.request.get('error') == 'True':
+			self.response.write(content.render(failure = True, passwords_do_not_match = True))
+			return
 		else:
-			self.response.write(content.render(failure = True))
+			if self.request.cookies.get("logged_in") == "True":
+				self.response.write(content.render(success = True, user = self.request.cookies.get("user")))
+			else:
+				self.response.write(content.render(failure = True))
 
 
  	def post(self):
@@ -142,12 +145,19 @@ class MainHandler(webapp2.RequestHandler):
 	       	last_name=self.request.get('lastname'),
 			username = self.request.get('Username'),
 		    email = self.request.get('Email'),
+			confirm_password = self.request.get('Confirm password'),
 		    password = self.request.get('Password'),
 		    location = self.request.get('location'))
-		cssi_user.put()
-		self.response.set_cookie("logged_in", "True")
-		self.response.set_cookie("user", cssi_user.username)
-		self.response.write(content.render(success = True, user = cssi_user.first_name))
+		print cssi_user.confirm_password
+		print cssi_user.password
+		if cssi_user.confirm_password == cssi_user.password:
+			cssi_user.put()
+			self.response.set_cookie("logged_in", "True")
+			self.response.set_cookie("user", cssi_user.username)
+			self.response.write(content.render(success = True, user = cssi_user.first_name))
+			return
+		else:
+			self.redirect('/login?error=True')
 
 class LoginHandler(webapp2.RequestHandler):
 	def get(self):
@@ -204,16 +214,7 @@ class UserInput(webapp2.RequestHandler):
 		self.response.write(content.render(title = "book variable"))
 		# print "Class is functional"
 
-class RemoveBookHandler(webapp2.RequestHandler):
-	def post(self):
-		book = self.request.get("booktitle")
-		username = self.request.cookies.get("user")
-		q = CssiUser.query().filter(CssiUser.username == username).get()
-		self.response.write(book)
-		q.user_library.remove(book)
-		q.put()
-		sleep(.5)
-		self.redirect('/library')
+
 
 def average(persons_input, title):
 	b = Books.query().fetch()
@@ -232,6 +233,5 @@ app = webapp2.WSGIApplication([
   ('/booklist', BookHandler),
   ('/bookview', BookView),
   ('/library', PersonalLibrary),
-  ('/addBooks', AddBookHandler),
-  ('/removebooks', RemoveBookHandler)
+  ('/addBooks', AddBookHandler)
 ], debug=True)
