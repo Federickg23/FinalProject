@@ -154,10 +154,10 @@ class BookHandler(webapp2.RequestHandler):
 				print "Item Created By User"
 				s = str(item.image_file).encode('base64')
 				print s
-				self.response.write(content.render(title = item.title, s = s, author = item.author, user = True, code = False))
+				self.response.write(content.render(title = item.title, s = s, author = item.author, user = True, code = False, synopsis = item.synopsis))
 			else:
 				print "Item hardcoded"
-				self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False))
+				self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False, synopsis=item.synopsis))
 		self.response.write("""
 			</div>
 			<form action="/addBooks"> <input type = "submit" value = "Add a new Book"> </form>
