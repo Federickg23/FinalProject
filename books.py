@@ -44,6 +44,7 @@ class AddBookHandler(webapp2.RequestHandler):
 		s = str(book.image_file).encode('base64')
 		# <img src="data:image/jpg;base64,{{s}}">
 		book.put()
+		self.redirect("/BookView")
 
 class BookView(webapp2.RequestHandler):
 	def get(self):
@@ -152,7 +153,6 @@ class BookHandler(webapp2.RequestHandler):
 				s = str(item.image_file).encode('base64')
 				print s
 				self.response.write(content.render(title = item.title, s = s, author = item.author, user = True, code = False))
-				return
 			else:
 				print "Item hardcoded"
 				self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False))
