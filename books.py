@@ -72,11 +72,19 @@ class BookView(webapp2.RequestHandler):
 			print "Item Created By User"
 			s = str(item.image_file).encode('base64')
 			print s
+<<<<<<< HEAD
 			self.response.write(content.render(title = item.title, s = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False, synopsis = item.synopsis))
 			return
 		else:
 			print "Item hardcoded"
 			self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False, average = average, list=list, Max = Max, Min = Min, synopsis = item.synopsis))
+=======
+			self.response.write(content.render(title = item.title, s = s, author = item.author, synopsis = item.synopsis, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
+			return
+		else:
+			print "Item hardcoded"
+			self.response.write(content.render(title = item.title, id = item.id, author = item.author, synopsis = item.synopsis, code = True, user = False, average = average, list=list, Max = Max, Min = Min))
+>>>>>>> 4033f4d3ef690a96e2acab4fdbd208c3de14de7a
 
 		#synopsis = item.synopsis
 
@@ -105,11 +113,19 @@ class BookView(webapp2.RequestHandler):
 			print "Item Created By User"
 			s = str(item.image_file).encode('base64')
 			print s
+<<<<<<< HEAD
 			self.response.write(content.render(title = item.title, s = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False, synopsis = item.synopsis))
 			return
 		else:
 			print "Item hardcoded"
 			self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False, average = average, list=list, Max = Max, Min = Min, synopsis = item.synopsis))
+=======
+			self.response.write(content.render(title = item.title, s = s, author = item.author, synopsis = item.synopsis, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
+			return
+		else:
+			print "Item hardcoded"
+			self.response.write(content.render(title = item.title, id = item.id, author = item.author, synopsis = item.synopsis, code = True, user = False, average = average, list=list, Max = Max, Min = Min))
+>>>>>>> 4033f4d3ef690a96e2acab4fdbd208c3de14de7a
 		item.put()
 
 		# self.response.write(content.render(title = item.title, id = item.id, author = item.author, average = average, averageSet = True, list=list))
@@ -176,6 +192,7 @@ def BookLoader():
 	book = Books(
 		title = "Lord of the Flies",
 		author = "William Golding",
+		synopsis = "Lord of the Flies is a 1954 novel by Nobel Prize winning British author William Golding. The book focuses on a group of British boys stranded on an uninhabited island and their disastrous attempt to govern themselves.",
 		id = "lordflies",
 		synopsis = "Lord of the Flies is a 1954 novel by Nobel Prize winning British author William Golding. The book focuses on a group of British boys stranded on an uninhabited island and their disastrous attempt to govern themselves.",
 		persons_input = 0,
@@ -186,7 +203,12 @@ def BookLoader():
 	book.put()
 	book = Books(
 		title = "The Great Gatsby",
+<<<<<<< HEAD
 		author = "F. Scott Fitzgerald",		synopsis = "The Great Gatsby is a 1925 novel written by American author F. Scott Fitzgerald that follows a cast of characters living in the fictional town of West and East Egg on prosperous Long Island in the summer of 1922.",
+=======
+		author = "F. Scott Fitzgerald",
+		synopsis = "The Great Gatsby is a 1925 novel written by American author F. Scott Fitzgerald that follows a cast of characters living in the fictional town of West and East Egg on prosperous Long Island in the summer of 1922.",
+>>>>>>> 4033f4d3ef690a96e2acab4fdbd208c3de14de7a
 		id = "GreatGatsby",
 		persons_input = 0,
 		bookindex = [180,210,120,150,180,90,180,180,150,270,120,180,120,240,300,180,120,90,230,230,110,130,120,140,160,140,150,70,80,100,110,90,220,230,210,70,80,80],
@@ -209,6 +231,7 @@ def BookLoader():
 	book = Books(
 		title = "Romeo and Juliet",
 		author = "William Shakespeare",
+		synopsis = "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families. ",
 		id = "RomeoJuliet",
 		synopsis = "Romeo and Juliet is a tragedy written by William Shakespeare early in his career about two young star-crossed lovers whose deaths ultimately reconcile their feuding families.",
 		persons_input = 0,
@@ -220,6 +243,7 @@ def BookLoader():
 	book = Books(
 		title = "Macbeth",
 		author = "William Shakespeare",
+		synopsis = "Macbeth is a tragedy by William Shakespeare; it is thought to have been first performed in 1606. It dramatises the damaging physical and psychological effects of political ambition on those who seek power for its own sake.",
 		id = "Macbeth",
 		synopsis = "Macbeth is a tragedy by William Shakespeare; it is thought to have been first performed in 1606. It dramatises the damaging physical and psychological effects of political ambition on those who seek power for its own sake.",
 		persons_input = 0,
@@ -232,6 +256,7 @@ def BookLoader():
 	book = Books(
 		title = "The Adventures of Huckleberry Finn",
 		author = "Mark Twain",
+		synopsis = "A nineteenth-century boy from a Mississippi River town recounts his adventures as he travels down the river with a runaway slave, encountering a family involved in a feud, two scoundrels pretending to be royalty, and Tom Sawyer's aunt who mistakes him for Tom.",
 		id = "HuckFinn",
 		synopsis = "A nineteenth-century boy from a Mississippi River town recounts his adventures as he travels down the river with a runaway slave, encountering a family involved in a feud, two scoundrels pretending to be royalty, and Tom Sawyer's aunt who mistakes him for Tom.",
 		persons_input = 0,
@@ -243,6 +268,7 @@ def BookLoader():
 	book = Books(
 		title = "The Giver",
 		author = "Lois Lowry",
+		synopsis = "The Giver is a 1993 American young adult dystopian novel by Lois Lowry. It is set in a society which at first appears to be utopian but is revealed to be dystopian as the story progresses. The novel follows a 12-year-old boy named Jonas.",
 		id = "Giver",
 		synopsis = "The Giver is a 1993 American young adult dystopian novel by Lois Lowry. It is set in a society which at first appears to be utopian but is revealed to be dystopian as the story progresses. The novel follows a 12-year-old boy named Jonas.",
 		persons_input = 0,
@@ -255,6 +281,7 @@ def BookLoader():
 	book = Books(
 		title = "Hamlet",
 		author = "William Shakespeare",
+		synopsis = "The Tragedy of Hamlet, Prince of Denmark, often shortened to Hamlet, is a tragedy written by William Shakespeare at an uncertain date between 1599 and 1602.",
 		id = "Hamlet",
 		synopsis = "The Tragedy of Hamlet, Prince of Denmark, often shortened to Hamlet, is a tragedy written by William Shakespeare at an uncertain date between 1599 and 1602.",
 		persons_input = 0,
@@ -266,6 +293,7 @@ def BookLoader():
 	book = Books(
 		title = "Fahrenheit 451",
 		author = "Ray Bradbury",
+		synopsis = "Fahrenheit 451 is a dystopian novel by American writer Ray Bradbury, published in 1953. It is regarded as one of his best works. The novel presents a future American society where books are outlawed and 'firemen' burn any that are found.",
 		id = "Fah451",
 		synopsis = "Fahrenheit 451 is a dystopian novel by American writer Ray Bradbury, published in 1953. It is regarded as one of his best works. The novel presents a future American society where books are outlawed and 'firemen' burn any that are found.",
 		persons_input = 0,
@@ -278,6 +306,7 @@ def BookLoader():
 	book = Books(
 		title = "Harry Potter and the Sorcerer's Stone",
 		author = "J.K. Rowling",
+		synopsis = "The first book in the Harry Potter Series",
 		id = "HarryPot",
 		synopsis = "The first book in the Harry Potter Series",
 		persons_input = 0,
@@ -301,6 +330,7 @@ def BookLoader():
 	book = Books(
 		title = "The Lion, the Witch and the Wardrobe",
 		author = "C. S. Lewis",
+		synopsis = "The Lion, the Witch and the Wardrobe is a fantasy novel for children by C. S. Lewis, published by Geoffrey Bles in 1950. It is the first published and best known of seven novels in The Chronicles of Narnia.",
 		id = "Narnia",
 		synopsis = "The Lion, the Witch and the Wardrobe is a fantasy novel for children by C. S. Lewis, published by Geoffrey Bles in 1950. It is the first published and best known of seven novels in The Chronicles of Narnia.",
 		persons_input = 0,

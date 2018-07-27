@@ -97,6 +97,9 @@ div {
 .synopsis {
   color: #FFFFFF;
   font-size: 20px;
+  text-align: center;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 /* Yes and No button options */
