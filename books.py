@@ -65,7 +65,7 @@ class BookView(webapp2.RequestHandler):
 			counter +=1
 		if counter != 0:
 			average = average/counter
-			Max = average * 4
+			Max = average * 3
 
 			Min = average / 4
 		if item.user_created == "yes":
