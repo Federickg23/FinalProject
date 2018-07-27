@@ -72,19 +72,11 @@ class BookView(webapp2.RequestHandler):
 			print "Item Created By User"
 			s = str(item.image_file).encode('base64')
 			print s
-<<<<<<< HEAD
-			self.response.write(content.render(title = item.title, s = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False, synopsis = item.synopsis))
-			return
-		else:
-			print "Item hardcoded"
-			self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False, average = average, list=list, Max = Max, Min = Min, synopsis = item.synopsis))
-=======
 			self.response.write(content.render(title = item.title, s = s, author = item.author, synopsis = item.synopsis, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
 			return
 		else:
 			print "Item hardcoded"
 			self.response.write(content.render(title = item.title, id = item.id, author = item.author, synopsis = item.synopsis, code = True, user = False, average = average, list=list, Max = Max, Min = Min))
->>>>>>> 4033f4d3ef690a96e2acab4fdbd208c3de14de7a
 
 		#synopsis = item.synopsis
 
@@ -113,19 +105,11 @@ class BookView(webapp2.RequestHandler):
 			print "Item Created By User"
 			s = str(item.image_file).encode('base64')
 			print s
-<<<<<<< HEAD
 			self.response.write(content.render(title = item.title, s = s, author = item.author, average = average, list=list, Max = Max, Min = Min, user = True, code = False, synopsis = item.synopsis))
 			return
 		else:
 			print "Item hardcoded"
 			self.response.write(content.render(title = item.title, id = item.id, author = item.author, code = True, user = False, average = average, list=list, Max = Max, Min = Min, synopsis = item.synopsis))
-=======
-			self.response.write(content.render(title = item.title, s = s, author = item.author, synopsis = item.synopsis, average = average, list=list, Max = Max, Min = Min, user = True, code = False))
-			return
-		else:
-			print "Item hardcoded"
-			self.response.write(content.render(title = item.title, id = item.id, author = item.author, synopsis = item.synopsis, code = True, user = False, average = average, list=list, Max = Max, Min = Min))
->>>>>>> 4033f4d3ef690a96e2acab4fdbd208c3de14de7a
 		item.put()
 
 		# self.response.write(content.render(title = item.title, id = item.id, author = item.author, average = average, averageSet = True, list=list))
@@ -203,12 +187,8 @@ def BookLoader():
 	book.put()
 	book = Books(
 		title = "The Great Gatsby",
-<<<<<<< HEAD
-		author = "F. Scott Fitzgerald",		synopsis = "The Great Gatsby is a 1925 novel written by American author F. Scott Fitzgerald that follows a cast of characters living in the fictional town of West and East Egg on prosperous Long Island in the summer of 1922.",
-=======
 		author = "F. Scott Fitzgerald",
 		synopsis = "The Great Gatsby is a 1925 novel written by American author F. Scott Fitzgerald that follows a cast of characters living in the fictional town of West and East Egg on prosperous Long Island in the summer of 1922.",
->>>>>>> 4033f4d3ef690a96e2acab4fdbd208c3de14de7a
 		id = "GreatGatsby",
 		persons_input = 0,
 		bookindex = [180,210,120,150,180,90,180,180,150,270,120,180,120,240,300,180,120,90,230,230,110,130,120,140,160,140,150,70,80,100,110,90,220,230,210,70,80,80],
